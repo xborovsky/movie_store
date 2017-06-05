@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>Create new movie entry</h1>
+    <form #form="ngForm" class="form-horizontal" (ngSubmit)="onSubmit(form)">
+        <div [ngClass]="{'form-group' : true, 'has-success' : !name.errors && (name.dirty || name.touched), 'has-feedback' : (name.dirty || name.touched), 'has-error' : name.errors && (name.dirty || name.touched)}">
+            <label for="name" class="col-sm-2">Movie name:</label>
+            <div class="col-sm-10">
+                <input type="text" name="name" #name="ngModel" class="form-control" id="name" ngModel required />
+                <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="!name.errors && (name.dirty || name.touched)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" *ngIf="name.errors && (name.dirty || name.touched)"></span>
+            </div>
+        </div>
+        <div [ngClass]="{'form-group' : true, 'has-success' : !year.errors && (year.dirty || year.touched), 'has-feedback' : (year.dirty || year.touched), 'has-error' : year.errors && (year.dirty || year.touched)}">
+            <label for="year" class="col-sm-2">Year:</label>
+            <div class="col-sm-10">
+                <input type="number" name="year" #year="ngModel" class="form-control" id="year" ngModel required min="1900" max="2099" />
+                <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="!year.errors && (year.dirty || year.touched)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" *ngIf="year.errors && (year.dirty || year.touched)"></span>
+            </div>
+        </div>
+        <div [ngClass]="{'form-group' : true, 'has-success' : !pcs.errors && (pcs.dirty || pcs.touched), 'has-feedback' : (pcs.dirty || pcs.touched), 'has-error' : pcs.errors && (pcs.dirty || pcs.touched)}">
+            <label for="pcs" class="col-sm-2">Pcs:</label>
+            <div class="col-sm-10">
+                <input type="number" name="pcs" #pcs="ngModel" class="form-control" id="pcs" ngModel required min="1" max="99" />
+                <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="!pcs.errors && (pcs.dirty || pcs.touched)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" *ngIf="pcs.errors && (pcs.dirty || pcs.touched)"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="button" [routerLink]="['/']" class="btn btn-default">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <a [routerLink]="['/create']">
+        <img src="/assets/img/add.png" alt="" title="Add movie" class="icon add" /> Add movie
+    </a>
+</div>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Pcs</th>
+                <th colspan="2" width="1%">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of getAllMovies(); let cnt = index;">
+                <td>{{ cnt + 1 }}</td>
+                <td>{{ movie.getName() }}</td>
+                <td>{{ movie.getYear() }}</td>
+                <td>{{ movie.getPcs() }}</td>
+                <td><img src="/assets/img/checkout.png" alt="" [attr.title]="movie.getPcs() < 1 ? 'Nothing to checkout' : 'Checkout'"
+                        class="icon checkout" [class.disabled]="movie.getPcs() === 0" (click)="checkoutMovie(movie)" /></td>
+                <td><img src="/assets/img/delete.png" alt="" title="Delete" class="icon delete" (click)="deleteMovie(movie.getId())" /></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
